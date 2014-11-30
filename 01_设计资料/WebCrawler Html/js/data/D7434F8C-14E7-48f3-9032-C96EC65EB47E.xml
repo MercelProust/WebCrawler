@@ -1,0 +1,4 @@
+tocTab[tocTab.length] = new Array("2:1", "", "WebCrawler时序图", "EARoot/EA2/EA17.htm", "185.png", "3", "0", "", "Sequence diagram0","{83F98707-7063-4d13-8244-B644F58B2C47}");
+tocTab[tocTab.length] = new Array("2:2", "", "", "EARoot/EA2/EA19.htm", "101.png", "17", "0", "", "InteractionFragment0","{0130374D-AA46-48f2-B01D-562A7A7F921C}");
+tocTab[tocTab.length] = new Array("2:3", "", "", "EARoot/EA2/EA20.htm", "101.png", "20", "0", "", "InteractionFragment0","{3724158C-031D-4f3e-9FA6-B13AA8C98C5F}");
+tocTab[tocTab.length] = new Array("2:4", "", "Actor1", "EARoot/EA2/EA21.htm", "6.png", "16", "0", "", "Actor0","{F6D8660A-D5A0-40c3-BB79-9BF15E61A012}");

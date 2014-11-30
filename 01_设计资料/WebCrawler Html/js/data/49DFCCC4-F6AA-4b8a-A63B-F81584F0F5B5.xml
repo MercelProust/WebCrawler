@@ -1,0 +1,2 @@
+tocTab[tocTab.length] = new Array("1", "1", "WebCrawler类图", "EARoot/EA1.htm", "31.png", "", "", "{4E1D697B-D5E5-4629-9607-2E7C7132E747}", "Package");
+tocTab[tocTab.length] = new Array("2", "1", "WebCrawler时序图", "EARoot/EA2.htm", "31.png", "", "", "{D7434F8C-14E7-48f3-9032-C96EC65EB47E}", "Package");
