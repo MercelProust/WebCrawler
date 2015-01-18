@@ -29,13 +29,10 @@ public:
 	virtual ~WebCrawlerAppLication();
 	UIInputWatcher*  m_UIThread;
 
-	void execute();		//对象执行主体函数。等待用户画面输入
-	std::vector<std::string> getWebSiteList();	//返回当前对象已经处理/处理中的网站列表
-	virtual void notifyUIEvents(std::vector<std::string> param);	//通知本对象处理画面输入的网址，通知方法
-
-private:
-	pthread_mutex_t m_add_website_mutex;	//添加网站的锁所用的互斥变量
-	pthread_mutex_t m_notify_event_mutex;	//通知事件执行锁定互斥变量
+	void execute();
+	std::vector<std::string> getWebSiteList();
+	void notifyAddWebSiteList(std::string web_site);
+	virtual void notifyUIEvents(std::vector<std::string> param);
 
 private:
 	/**
@@ -51,7 +48,6 @@ private:
 	pthread_mutex_t web_site_ls_mutex;
 
 	void activateCrawlerTd(std::string web_site);
-	void notifyAddWebSiteList(std::string web_site);
 
 };
 #endif

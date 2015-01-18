@@ -28,13 +28,14 @@ public:
 	WebCrawlerThread(std::string web_site);
 	virtual ~WebCrawlerThread();
 
-protected:
-	virtual void* run(void* p_data);
+public:
+	virtual void run();
 
 private:
 	FileManager* file_mgr;
 	ITextParser* parser;
 	ITransactionDriver* transactor;
 	std::string web_site;
+
 };
 #endif
