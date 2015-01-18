@@ -2,7 +2,7 @@
 //  IThread.h
 //  Implementation of the Class IThread
 //  Created on:      30-11-2014 11:46:55
-//  Original author: Administrator
+//  Original author: MercelPorust
 ///////////////////////////////////////////////////////////
 
 #ifndef ITHREAD_H
@@ -11,7 +11,7 @@
 #include <pthread.h>
 
 /**
- * 运行线程借口包装
+ * 运行线程接口包装
  */
 class IThread
 {
@@ -23,17 +23,20 @@ public:
 	pthread_t getTd();
 	void join();
 	bool start();
-	void stop();
+	virtual void stop();
+	bool is_alive();
+
+private:
+	static void* thread_run(void* p_data);
 
 protected:
-	/**
-	 * 线程句柄
-	 */
+	virtual void* run(void* p_data) = 0;
+
+protected:
+	// 线程句柄
 	pthread_t td;
 
-public:
-	//线程运行逻辑函数
-	virtual void run() = 0;
-
+private:
+	void *thread_params[2];
 };
-#endif // !defined(EA_D2708E77_CBBF_4af5_8B5C_AFB8C2431323__INCLUDED_)
+#endif

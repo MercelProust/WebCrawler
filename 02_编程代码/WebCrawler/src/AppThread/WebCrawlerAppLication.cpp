@@ -2,18 +2,19 @@
 //  WebCrawlerAppLication.cpp
 //  Implementation of the Class WebCrawlerAppLication
 //  Created on:      30-11-2014 11:46:56
-//  Original author: Administrator
+//  Original author: MercelProust
 ///////////////////////////////////////////////////////////
 
 #include "WebCrawlerAppLication.h"
 #include "WebCrawlerThread.h"
 #include "../Util/Consts.h"
+#include <unistd.h>
 
 using namespace std;
 
 WebCrawlerAppLication::WebCrawlerAppLication(){
 	m_UIThread = new UIInputWatcher;
-	m_UIThread->regist(WEB_SITE,  (*this));
+	m_UIThread->regist(WEB_SITE,  this);
 }
 
 WebCrawlerAppLication::~WebCrawlerAppLication(){
@@ -42,7 +43,7 @@ void WebCrawlerAppLication::activateCrawlerTd(string web_site){
 	{
 		WebCrawlerThread* webCrawlerThread =  new WebCrawlerThread(web_site);
 		this->web_crawler_thread_set.insert((IThread*)webCrawlerThread);
-		webCrawlerThread->run();
+		webCrawlerThread->start();
 	}
 	catch (...)
 	{
@@ -56,6 +57,13 @@ void WebCrawlerAppLication::activateCrawlerTd(string web_site){
  */
 void WebCrawlerAppLication::execute(){
 
+	//执行主体，维持主线程的运行，无特殊处理
+	while (true)
+	{
+		sleep(1000);
+	}
+
+	return;
 }
 
 
@@ -72,10 +80,25 @@ vector<string> WebCrawlerAppLication::getWebSiteList(){
  *接受新增网站的网址，添加到本对象的web_site_list列表，并开启新的子线程进行相关的抓取
  */
 void WebCrawlerAppLication::notifyAddWebSiteList(string web_site){
+	//加锁
+	pthread_mutex_lock(&m_add_website_mutex);
+
+	this->web_site_list.push_back(web_site);
+	//解锁
+	pthread_mutex_unlock(&m_add_website_mutex);
 
 }
 
 
 void WebCrawlerAppLication::notifyUIEvents(std::vector<string> param){
 
+	pthread_mutex_lock(&m_notify_event_mutex);
+
+	for (unsigned int  i=0; i<param.size(); i++)
+	{
+		this->activateCrawlerTd(param[i]);
+		this->notifyAddWebSiteList(param[i]);
+	}
+
+	pthread_mutex_unlock(&m_notify_event_mutex);
 }

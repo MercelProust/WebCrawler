@@ -2,7 +2,7 @@
 //  UIInputWatcher.h
 //  Implementation of the Class UIInputWatcher
 //  Created on:      30-11-2014 11:46:56
-//  Original author: Administrator
+//  Original author: MercelProust
 ///////////////////////////////////////////////////////////
 
 #if !defined(EA_0DE1839A_EC1B_4a92_9C16_D5C94523F105__INCLUDED_)
@@ -31,14 +31,18 @@ public:
 	IUIInputProcessor *m_IUIInputProcessor;
 
 	void notify(UIEvent type, std::vector<std::string> param);
-	void parseInputText(std::string text, UIEvent& type, std::vector<std::string>& param);
-	void regist(UIEvent type, IUIInputProcessor& processor);
+	bool parseInputText(std::string text, UIEvent& type, std::vector<std::string>& param);
+	void regist(UIEvent type, IUIInputProcessor* one_processor);
 
-public:
-	void run();
+	void stop();
+
+protected:
+	virtual void* run(void* p_data);
 
 private:
-	std::map<UIEvent, std::vector<WebCrawlerAppLication> > processor;
+	std::map<UIEvent, std::vector<IUIInputProcessor*> > processor;
+
+	bool stop_thread;
 
 };
 #endif // !defined(EA_0DE1839A_EC1B_4a92_9C16_D5C94523F105__INCLUDED_)
