@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 /**
  * 构造函数
  */
@@ -47,6 +46,6 @@ WebCrawlerThread::~WebCrawlerThread(){
 /**
  * 线程运行函数
  */
-void WebCrawlerThread::run(){
-
+void* WebCrawlerThread::run(void* p_data){
+	pthread_exit(0);
 }

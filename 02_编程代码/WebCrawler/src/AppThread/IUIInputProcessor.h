@@ -2,7 +2,7 @@
 //  IUIInputProcessor.h
 //  Implementation of the Class IUIInputProcessor
 //  Created on:      30-11-2014 11:46:56
-//  Original author: Administrator
+//  Original author: MercelProust
 ///////////////////////////////////////////////////////////
 
 #ifndef IUIINPUTPROCESSOR_H

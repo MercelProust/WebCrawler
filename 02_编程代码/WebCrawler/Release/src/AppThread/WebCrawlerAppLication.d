@@ -7,7 +7,7 @@ src/AppThread/WebCrawlerAppLication.d: \
  ../src/AppThread/../Driver/ITransactionDriver.h \
  ../src/AppThread/../Util/ITextParser.h \
  ../src/AppThread/../Util/HttpPageTxtParser.h \
- ../src/AppThread/../Util/ITextParser.h
+ ../src/AppThread/../Util/ITextParser.h ../src/AppThread/../Util/Consts.h
 
 ../src/AppThread/WebCrawlerAppLication.h:
 
@@ -30,3 +30,5 @@ src/AppThread/WebCrawlerAppLication.d: \
 ../src/AppThread/../Util/HttpPageTxtParser.h:
 
 ../src/AppThread/../Util/ITextParser.h:
+
+../src/AppThread/../Util/Consts.h:

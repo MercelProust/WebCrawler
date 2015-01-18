@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  ITransactionDriver.cpp
 //  Implementation of the Class ITransactionDriver
-//  Created on:      30-十一月-2014 11:46:55
+//  Created on:      30-十一锟斤拷-2014 11:46:55
 //  Original author: Administrator
 ///////////////////////////////////////////////////////////
 
@@ -9,7 +9,7 @@
 
 
 ITransactionDriver::ITransactionDriver(){
-
+	sock = 0;
 }
 
 
